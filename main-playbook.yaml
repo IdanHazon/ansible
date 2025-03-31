@@ -1,0 +1,19 @@
+--- 
+ - name: Deploy web servers
+   hosts: localhost
+   serial: 56
+   become: yes
+   vars:
+     FULLNAME: "XXX" 
+     ansible_become_pass: "XXX"
+   tasks:
+     
+      - name: Import deploy role
+        import_role:
+          name: roles/deploy
+        tags: deploy
+
+      - name: Import revert role
+        import_role:
+          name: roles/revert
+        tags: revert

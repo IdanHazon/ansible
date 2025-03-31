@@ -1,0 +1,22 @@
+---
+    - name: Remove Nginx configuration file
+      file:
+        path: /etc/nginx/nginx.conf
+        state: absent
+
+    - name: Move backup file back in place
+      copy: 
+        src: /my-web-server/data/backup_nginx.conf
+        dest: /etc/nginx/nginx.conf
+        remote_src: true
+
+    - name: Remove data directory
+      file:
+        path: /my-web-server
+        state: absent
+
+    - name: Stop Nginx service
+      service:
+        name: nginx
+        state: stopped
+

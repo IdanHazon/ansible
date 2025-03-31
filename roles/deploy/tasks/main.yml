@@ -1,0 +1,42 @@
+---
+    - name: Install Nginx 
+      yum:
+        name: nginx
+        state: present
+
+    - name: Start Nginx service
+      service:
+        name: nginx
+        state: started
+
+    - name: Create data directory
+      file:
+        path: /my-web-server/data
+        state: directory
+
+    - name: Create a backup configuration file
+      copy:
+        src: /etc/nginx/nginx.conf
+        dest: /my-web-server/data/backup_nginx.conf
+        remote_src: true
+
+    - name: Remove original file after copying
+      file:
+        path: /etc/nginx/nginx.conf
+        state: absent
+
+    - name: Copy Nginx configuration file
+      copy:
+        src: files/nginx.conf
+        dest: /etc/nginx/nginx.conf
+    
+    - name: Write student name using jinja2
+      template:
+         src: templates/index.j2
+         dest: /my-web-server/data/index.html
+
+    - name: Reload nginx service
+      service:
+        name: nginx
+        state: reloaded 
+
