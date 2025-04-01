@@ -1,8 +1,4 @@
 ---
-    - name: Remove Nginx configuration file
-      file:
-        path: /etc/nginx/nginx.conf
-        state: absent
 
     - name: Move backup file back in place
       copy: 
