@@ -20,11 +20,6 @@
         dest: /my-web-server/data/backup_nginx.conf
         remote_src: true
 
-    - name: Remove original file after copying
-      file:
-        path: /etc/nginx/nginx.conf
-        state: absent
-
     - name: Copy Nginx configuration file
       copy:
         src: files/nginx.conf
