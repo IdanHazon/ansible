@@ -1,7 +1,6 @@
 --- 
  - name: Deploy web servers
    hosts: localhost
-   serial: 56
    become: yes
    vars:
      FULLNAME: "XXX" 
