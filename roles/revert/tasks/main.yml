@@ -11,8 +11,4 @@
         path: /my-web-server
         state: absent
 
-    - name: Stop Nginx service
-      service:
-        name: nginx
-        state: stopped
 
