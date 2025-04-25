@@ -13,12 +13,10 @@
       file:
         path: /my-web-server/data
         state: directory
-
-    - name: Create a backup configuration file
-      copy:
-        src: /etc/nginx/nginx.conf
-        dest: /my-web-server/data/backup_nginx.conf
-        remote_src: true
+      notify: Create a backup configuration file
+    
+    - name: Call the handler
+      meta: flush_handlers
 
     - name: Copy Nginx configuration file
       copy:

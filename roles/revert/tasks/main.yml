@@ -11,7 +11,8 @@
         path: /my-web-server
         state: absent
 
-    - name: Reload nginx service
+    - name: Stop nginx service
       service:
         name: nginx
-        state: reloaded 
+        state: stopped 
+
